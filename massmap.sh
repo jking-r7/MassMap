@@ -57,7 +57,7 @@ portScan(){
     echo -e "${RED}[*] Masscan Done!"
 
     echo -e "${GREEN}[+] Running Nmap.${RESET}"
-    sudo nmap -sVC -p $open_ports --open -v -Pn -n -T4 -iL $WORKING_DIR/nmap_targets.tmp -oA $RESULTS_PATH/nmap
+    sudo nmap -sVC -O -p $open_ports --open -v -Pn -n -T4 -iL $WORKING_DIR/nmap_targets.tmp -oA $RESULTS_PATH/nmap
     sudo rm $WORKING_DIR/nmap_targets.tmp
     xsltproc -o $RESULTS_PATH/nmap-native.html $RESULTS_PATH/nmap.xml
     xsltproc -o $RESULTS_PATH/nmap-bootstrap.html $WORKING_DIR/bootstrap-nmap.xsl $RESULTS_PATH/nmap.xml
